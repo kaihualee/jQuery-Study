@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title>JavaScript JSON Serialization</title>
+<style type="text/css">
+/* <![CDATA[ */
+body { font: 85%/1.2em sans-serif; color: #333; background-color: #fff; }
+/* ]]> */
+</style>
+</head>
+<body>
+
+<h1>Cross-browser JSON Serialization in JavaScript</h1>
+
+<p>This JavaScript code implements JSON.stringify and JSON.parse functionality for browsers without native support.</p>
+
+<hr />
+
+<h2>JavaScript object: obj1</h2>
+<p>The following object is defined in JavaScript:</p>
+<pre>
+var obj1 = {
+	b1: true,
+	s1: "text string",
+	n1: 12345,
+	n2: null,
+	n3: undefined,
+	a1: [ 1,1,2,3,5,8, [13, 21, 34] ],
+	o1: {
+		a: [3, 2, 1],
+		b: {
+			c: 42,
+			d: [ 3.14, 1.618 ]
+		}
+	}
+};
+</pre>
+
+<p><strong>Selection of properties from obj1:</strong></p>
+<p id="obj1prop">&nbsp;</p>
+
+<p><strong>JSON Serialization of obj1:</strong></p>
+<p id="obj1json">&nbsp;</p>
+
+<p><strong>Selection of properties following JSON parsing to obj2:</strong></p>
+<p id="obj2parse">&nbsp;</p>
+<p id="result">&nbsp;</p>
+
+<hr />
+
+<p>This JavaScript code has been created by Craig Buckler of <a href="http://www.optimalworks.net/">Optimalworks.net</a> for <a href="http://www.sitepoint.com/">SitePoint.com</a>. Please refer to the article <a href="http://www.sitepoint.com/blogs/2009/08/19/javascript-json-serialization/"><strong>Cross-browser JSON Serialization for JavaScript</strong></a>.</p>
+
+<p>View <a href="json-serialization.js">json-serialization.js</a> for implementation instructions.</p>
+
+<p>Please use the code as you wish at your own risk. It is provided as-is without warrranty of any kind.</p>
+
+<script type="text/javascript" src="json-serialization.js"></script>
+<script type="text/javascript">
+// <![CDATA[
+// example code
+window.onload = function() {
+
+	var obj1 = {
+		b1: true,
+		s1: "text string",
+		n1: 12345,
+		n2: null,
+		n3: undefined,
+		a1: [ 1,1,2,3,5,8, [13, 21, 34] ],
+		o1: {
+			a: [3, 2, 1],
+			b: {
+				c: 42,
+				d: [ 3.142, 1.618 ]
+			}
+		}
+	};
+
+	// properties to display
+	var p = ["b1", "s1", "n1", "n2", "a1[6][1]", "o1.b.c", "o1.b.d[0]"];
+	var str1 = "", str2 = "", i, pl = p.length;
+
+	// display original properties
+	for (i = 0; i < pl; i++) str1 += "obj1." + p[i] + " = " + eval("obj1."+p[i]) + " ; ";
+	document.getElementById("obj1prop").firstChild.nodeValue = str1;
+
+	// JSON stringify
+	var json = JSON.stringify(obj1);
+	document.getElementById("obj1json").firstChild.nodeValue = json;
+
+	// reset obj1
+	obj1 = null;
+
+	// JSON parse
+	var obj2 = JSON.parse(json);
+	for (i = 0; i < pl; i++) str2 += "obj2." + p[i] + " = " + eval("obj2."+p[i]) + " ; ";
+	document.getElementById("obj2parse").firstChild.nodeValue = str2;
+
+	// result
+	document.getElementById("result").firstChild.nodeValue = "JSON was " + (str1 == str2.replace(/obj2/g, "obj1") ? "" : "NOT ") + "parsed correctly.";
+
+}
+// ]]>
+</script>
+
+</body>
+</html>
