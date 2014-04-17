@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!--使用http-equiv的content-type可以提供网页的编码信息-->
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="hubspot-message.css/messenger.css">
+		<link rel="stylesheet" type="text/css" href="hubspot-message.css/messenger-theme-future.css">
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<script src="js/jquery.min.js"></script>
+		<script src="hubspot-message.js/messenger.min.js"></script>
+		<script src="http://http://backbonejs.org/backbone-min.js"></script>
+		<script>
+			$(function() {
+				$._messengerDefaults = {
+					extraClasses : 'messenger-fixed messenger-theme-block messenger-on-top'
+				};
+				//$.globalMessenger().post("Your request has succeded!");  
+				var username="jde";
+				$.globalMessenger()['do']({
+                    errorMessage: "服务器错误,请稍后重试!",
+                    hideAfter: 2,
+                    showCloseButton: true
+                },{
+                    url:"/username_check/",
+                    data: {'username': username},
+                    type:'post',
+                    async: false,
+                    success: function(res){
+                        var res = JSON.parse(res);  // 将字符串转化为字典
+                        if (res['error'] == 'error'){
+                            pass_check = false;
+                            return {type:'error', message:"用户名为空或者该用户名已经存在"};
+                        }
+                        return false;
+                    }
+                });
+			});
+		</script>
+	</body>
+</html>
