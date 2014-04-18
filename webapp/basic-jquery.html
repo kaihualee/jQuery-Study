@@ -4,32 +4,8 @@
 		<meta charset="utf-8">
 		<title>jQuery File Upload Example</title>
 		<link rel="stylesheet"
-		href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		href="bootstrapv3.1.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/jquery.fileupload.css">
-
-	</head>
-	<body>
-		<span class="btn btn-success fileinput-button"> <i class="glyphicon glyphicon-plus"></i> <span>Select</span> <!-- The file input field used as target for the file upload widget -->
-			<input id="fileupload" type="file" name="files[]" multiple>
-		</span>
-		<hr />
-		<div id="js-template-example" ></div>
-		<h3 id="loadheader">点击下面的按钮，通过 jQuery AJAX load改变这段文本。</h3>
-		<button id="loadbtn" type="button">
-			获得外部的内容
-		</button>
-		<a href="http://www.w3school.com.cn/jquery/ajax_load.asp">More Info</a>
-		<h3 id="postheader">请点击下面的按钮，通过 jQuery AJAX post改变这段文本。</h3>
-		<button id="postbtn">
-			向页面发送 HTTP POST 请求，并获得返回的结果
-		</button>
-		<a href="http://www.w3school.com.cn/jquery/jquery_ajax_get_post.asp">More Info</a>
-		<br />
-		<iframe id="ifr" src="http://www.w3school.com.cn/tags/tag_iframe.asp" style="display: none"></iframe>
-		<hr/>
-		<h4>跨域jQuery Ajax getJSON获取图片</h4>
-		<div id="images"></div>
-
 		<script type="text/x-tmpl" id="tmpl-demo">
 			<h4>{%=o.title%}</h3>
 			<p>Released under the
@@ -42,7 +18,7 @@
 			</ul>
 			<a href="http://api.jquery.com/jquery.getjson/">More Info</a>
 		</script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 		<script src="js/vendor/jquery.ui.widget.js"></script>
 		<script src="js/jquery.iframe-transport.js"></script>
@@ -50,7 +26,7 @@
 		<script src="js/jquery.fileupload.js"></script>
 		<script
 		src="http://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
-		<script src="js/basic.main.js" ></script>
+		<script src="js/jquery.main.js" ></script>
 		<script>
 			$(function() {
 				$('#fileupload').fileupload({
@@ -70,6 +46,32 @@
 				});
 			});
 		</script>
+	</head>
+	<body>
+		<h3 id="loadheader">jQuery basic fileupload plugin。</h3>
+		<span class="btn btn-success fileinput-button"> <i class="glyphicon glyphicon-plus"></i> <span>Select</span> <!-- The file input field used as target for the file upload widget -->
+			<input id="fileupload" type="file" name="files[]" multiple>
+		</span>
+		<hr />
+		<div id="js-template-example" ></div>
+		
+		<h3 id="loadheader">点击下面的按钮，通过 jQuery AJAX load改变这段文本。</h3>
+		<button id="loadbtn" type="button">
+			获得外部的内容
+		</button>
+		<a href="http://www.w3school.com.cn/jquery/ajax_load.asp">More Info</a>
+		
+		<h3 id="postheader">请点击下面的按钮，通过 jQuery AJAX post改变这段文本。</h3>
+		<button id="postbtn">
+			向页面发送 HTTP POST 请求，并获得返回的结果
+		</button>
+		<a href="http://www.w3school.com.cn/jquery/jquery_ajax_get_post.asp">More Info</a>
+		<hr />
+		<iframe id="ifr" src="http://www.w3school.com.cn/tags/tag_iframe.asp" style="display: none"></iframe>
+		<hr/>
+		
+		g<h4>跨域jQuery Ajax getJSON获取图片</h4>
+		<div id="images"></div>
 
 	</body>
 </html>
